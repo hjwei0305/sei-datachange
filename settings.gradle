@@ -1,1 +1,3 @@
 rootProject.name = 'sei-datachange'
+include 'sei-datachange-service'
+include 'sei-datachange-api'
