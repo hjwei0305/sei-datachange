@@ -1,7 +1,7 @@
 sei: # 应用全局配置
   application:
     code: sei-datachange
-    name: sei-datachange
+    name: 数据变更日志服务
     env: DEV
     version: 6.0.1
     swagger:

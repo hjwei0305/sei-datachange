@@ -26,7 +26,7 @@ public class HelloController implements HelloApi {
     @Autowired
     private HelloService service;
 
-    @Value("${demo.test-key:123456}")
+    @Value("${data-change.test-key:123456}")
     private String testKey;
 
     /**

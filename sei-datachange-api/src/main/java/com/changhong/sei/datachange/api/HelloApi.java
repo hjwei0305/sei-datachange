@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 实现功能: 你好API接口
  */
-@FeignClient(name = "sei-datachange", path = "demoHello")
+@FeignClient(name = "sei-datachange", path = "dataChangeHello")
 public interface HelloApi {
     /**
      * say hello
