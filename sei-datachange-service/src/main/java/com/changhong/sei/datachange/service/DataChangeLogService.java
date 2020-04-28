@@ -1,7 +1,11 @@
 package com.changhong.sei.datachange.service;
 
+import com.changhong.sei.core.dto.ResultData;
 import com.changhong.sei.core.dto.datachange.DataHistoryItem;
 import com.changhong.sei.core.dto.datachange.DataHistoryRecord;
+import com.changhong.sei.core.dto.serach.PageResult;
+import com.changhong.sei.datachange.dto.DataChangeLogDto;
+import com.changhong.sei.datachange.dto.DataChangeLogQuickQueryParam;
 import com.changhong.sei.datachange.entity.DataChangeLog;
 import com.changhong.sei.datachange.dao.DataChangeLogDao;
 import com.changhong.sei.core.dao.BaseEntityDao;
@@ -11,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
@@ -60,5 +65,16 @@ public class DataChangeLogService extends BaseEntityService<DataChangeLog> {
             log.setNewValue(item.getNewValue());
             dao.save(log);
         });
+    }
+
+    /**
+     * 分页查询数据变更历史
+     *
+     * @param queryParam 查询参数
+     * @param tenantCode 租户代码
+     * @return 查询结果
+     */
+    public PageResult<DataChangeLog> queryByPage(DataChangeLogQuickQueryParam queryParam, String tenantCode) {
+        return dao.queryByPage(queryParam, tenantCode);
     }
 }

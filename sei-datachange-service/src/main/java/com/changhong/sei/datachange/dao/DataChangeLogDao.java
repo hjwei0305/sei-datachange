@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  * @since 2020-04-24 10:02:46
  */
 @Repository
-public interface DataChangeLogDao extends BaseEntityDao<DataChangeLog> {
+public interface DataChangeLogDao extends BaseEntityDao<DataChangeLog>, DataChangeLogExtDao {
 }
