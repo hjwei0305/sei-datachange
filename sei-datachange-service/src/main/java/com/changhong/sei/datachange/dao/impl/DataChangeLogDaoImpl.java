@@ -7,6 +7,7 @@ import com.changhong.sei.core.entity.search.QuerySql;
 import com.changhong.sei.datachange.dao.DataChangeLogExtDao;
 import com.changhong.sei.datachange.dto.DataChangeLogQuickQueryParam;
 import com.changhong.sei.datachange.entity.DataChangeLog;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.EntityManager;
@@ -61,8 +62,10 @@ public class DataChangeLogDaoImpl extends BaseEntityDaoImpl<DataChangeLog> imple
             sqlParams.put("quickSearchValue", quickSearchValue+"%");
         }
         QuerySql querySql = new QuerySql(select, fromAndWhere);
-        // 排序
-        querySql.setOrderBy("order by log.operateTime desc");
+        // 如果前端没有排序，则采用默认排序
+        if (CollectionUtils.isEmpty(queryParam.getSortOrders())) {
+            querySql.setOrderBy("order by log.operateTime desc");
+        }
         return PageResultUtil.getResult(entityManager,querySql,sqlParams, queryParam);
     }
 }
