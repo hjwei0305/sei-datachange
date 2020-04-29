@@ -38,10 +38,10 @@ public class DataChangeLogControllerTest extends BaseUnitTest {
     @Test
     public void queryByPage() {
         DataChangeLogQuickQueryParam queryParam = new DataChangeLogQuickQueryParam();
-        //queryParam.setEntityName("岗位");
+        queryParam.setClassName("com.changhong.sei.basic.entity.Corporation");
         //queryParam.setQuickSearchValue("成功");
-        queryParam.setStartTime(DateUtils.parseTime("2020-04-29 09:26:00"));
-        queryParam.setEndTime(DateUtils.parseTime("2020-04-29 09:26:00"));
+        queryParam.setStartTime(DateUtils.parseTime("2020-04-20 09:26:00"));
+        queryParam.setEndTime(DateUtils.getCurrentDateTime());
         queryParam.setPageInfo(new PageInfo());
         ResultData<PageResult<DataChangeLogDto>> resultData = controller.queryByPage(queryParam);
         System.out.println(JsonUtils.toJson(resultData));

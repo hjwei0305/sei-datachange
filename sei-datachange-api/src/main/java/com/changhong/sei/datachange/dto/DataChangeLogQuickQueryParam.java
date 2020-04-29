@@ -17,6 +17,12 @@ import java.util.Date;
 public class DataChangeLogQuickQueryParam extends QuickQueryParam {
     private static final long serialVersionUID = 3623732498549429322L;
     /**
+     * 业务实体类名
+     */
+    @ApiModelProperty("业务实体类名")
+    private String className;
+
+    /**
      * 业务实体名称
      */
     @ApiModelProperty("业务实体名称")
@@ -41,6 +47,14 @@ public class DataChangeLogQuickQueryParam extends QuickQueryParam {
     @NotNull
     @ApiModelProperty(value = "截止时间", required = true)
     private Date endTime;
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
     public String getEntityName() {
         return entityName;

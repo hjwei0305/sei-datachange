@@ -42,6 +42,11 @@ public class DataChangeLogDaoImpl extends BaseEntityDaoImpl<DataChangeLog> imple
         fromAndWhere = fromAndWhere + "and (log.operateTime between :startTime and :endTime) ";
         sqlParams.put("startTime", queryParam.getStartTime());
         sqlParams.put("endTime", queryParam.getEndTime());
+        // 限制业务实体类名
+        if (StringUtils.isNotBlank(queryParam.getClassName())) {
+            fromAndWhere = fromAndWhere + "and (log.className = :className) ";
+            sqlParams.put("className", queryParam.getClassName());
+        }
         // 限制实体名称
         if (StringUtils.isNotBlank(queryParam.getEntityName())) {
             fromAndWhere = fromAndWhere + "and (log.entityName = :entityName) ";
