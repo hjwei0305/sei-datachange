@@ -7,6 +7,7 @@ import com.changhong.sei.core.utils.ResultDataUtil;
 import com.changhong.sei.datachange.api.DataChangeLogApi;
 import com.changhong.sei.datachange.dto.DataChangeLogDto;
 import com.changhong.sei.datachange.dto.DataChangeLogQuickQueryParam;
+import com.changhong.sei.datachange.dto.LogEntityName;
 import com.changhong.sei.datachange.entity.DataChangeLog;
 import com.changhong.sei.datachange.service.DataChangeLogService;
 import com.changhong.sei.core.controller.BaseEntityController;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import io.swagger.annotations.Api;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * (DataChangeLog)数据变更日志API服务实现
@@ -38,6 +40,16 @@ public class DataChangeLogController extends BaseEntityController<DataChangeLog,
     @Override
     public BaseEntityService<DataChangeLog> getService() {
         return service;
+    }
+
+    /**
+     * 获取业务实体的清单
+     *
+     * @return 业务实体的清单
+     */
+    @Override
+    public ResultData<List<LogEntityName>> getEntityNames() {
+        return ResultData.success(service.getEntityNames());
     }
 
     /**

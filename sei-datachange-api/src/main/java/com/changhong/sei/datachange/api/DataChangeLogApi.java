@@ -5,12 +5,14 @@ import com.changhong.sei.core.dto.serach.PageResult;
 import com.changhong.sei.datachange.dto.DataChangeLogDto;
 import com.changhong.sei.core.api.BaseEntityApi;
 import com.changhong.sei.datachange.dto.DataChangeLogQuickQueryParam;
+import com.changhong.sei.datachange.dto.LogEntityName;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * (DataChangeLog)数据变更日志API接口
@@ -21,6 +23,14 @@ import javax.validation.Valid;
 @Valid
 @FeignClient(name = "sei-datachange", path = "dataChangeLog")
 public interface DataChangeLogApi extends BaseEntityApi<DataChangeLogDto> {
+
+    /**
+     * 获取业务实体的清单
+     * @return 业务实体的清单
+     */
+    @GetMapping(path = "getEntityNames")
+    @ApiOperation(value = "获取业务实体的清单", notes = "获取记录日志的业务实体的清单")
+    ResultData<List<LogEntityName>> getEntityNames();
 
     /**
      * 分页查询数据变更历史

@@ -6,6 +6,7 @@ import com.changhong.sei.core.dto.datachange.DataHistoryRecord;
 import com.changhong.sei.core.dto.serach.PageResult;
 import com.changhong.sei.datachange.dto.DataChangeLogDto;
 import com.changhong.sei.datachange.dto.DataChangeLogQuickQueryParam;
+import com.changhong.sei.datachange.dto.LogEntityName;
 import com.changhong.sei.datachange.entity.DataChangeLog;
 import com.changhong.sei.datachange.dao.DataChangeLogDao;
 import com.changhong.sei.core.dao.BaseEntityDao;
@@ -16,8 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 /**
@@ -76,5 +76,24 @@ public class DataChangeLogService extends BaseEntityService<DataChangeLog> {
      */
     public PageResult<DataChangeLog> queryByPage(DataChangeLogQuickQueryParam queryParam, String tenantCode) {
         return dao.queryByPage(queryParam, tenantCode);
+    }
+
+    /**
+     * 获取业务实体的清单
+     * @return 业务实体的清单
+     */
+    public List<LogEntityName> getEntityNames() {
+        List<Object[]> entityNames = dao.getEntityNames();
+        if (CollectionUtils.isEmpty(entityNames)) {
+            return new LinkedList<>();
+        }
+        List<LogEntityName> logEntityNames = new LinkedList<>();
+        entityNames.forEach(names-> {
+            LogEntityName logEntityName = new LogEntityName();
+            logEntityName.setClassName(names[0].toString());
+            logEntityName.setEntityName(names[1].toString());
+            logEntityNames.add(logEntityName);
+        });
+        return logEntityNames;
     }
 }
