@@ -29,6 +29,12 @@ public class DataChangeLogQuickQueryParam extends QuickQueryParam {
     private String entityName;
 
     /**
+     * 操作人账号
+     */
+    @ApiModelProperty("操作人账号")
+    private String operatorAccount;
+
+    /**
      * 操作人名称
      */
     @ApiModelProperty("操作人名称")
@@ -62,6 +68,14 @@ public class DataChangeLogQuickQueryParam extends QuickQueryParam {
 
     public void setEntityName(String entityName) {
         this.entityName = entityName;
+    }
+
+    public String getOperatorAccount() {
+        return operatorAccount;
+    }
+
+    public void setOperatorAccount(String operatorAccount) {
+        this.operatorAccount = operatorAccount;
     }
 
     public String getOperatorName() {
