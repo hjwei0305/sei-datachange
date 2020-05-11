@@ -21,4 +21,12 @@ public interface DataChangeLogDao extends BaseEntityDao<DataChangeLog>, DataChan
      */
     @Query("select log.className, log.entityName from DataChangeLog log group by log.className, log.entityName")
     List<Object[]> getEntityNames();
+
+    /**
+     * 获取一个业务实体的数据变更历史
+     * @param entityId 业务实体Id
+     * @param tenantCode 租户代码
+     * @return 数据变更历史
+     */
+    List<DataChangeLog> findByEntityIdAndTenantCodeOrderByOperateTimeDesc(String entityId, String tenantCode);
 }

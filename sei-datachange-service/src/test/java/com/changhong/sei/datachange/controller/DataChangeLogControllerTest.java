@@ -54,4 +54,12 @@ public class DataChangeLogControllerTest extends BaseUnitTest {
         System.out.println(JsonUtils.toJson(resultData));
         Assert.assertTrue(resultData.successful());
     }
+
+    @Test
+    public void findLogsByEntityId() {
+        String entityId = "63440EA8-91A4-11EA-8585-0242C0A84603";
+        ResultData<List<DataChangeLogDto>> resultData = controller.findLogsByEntityId(entityId);
+        LOG.debug(JsonUtils.toJson(resultData));
+        Assert.assertTrue(resultData.successful());
+    }
 }

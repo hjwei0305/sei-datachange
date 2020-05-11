@@ -79,6 +79,16 @@ public class DataChangeLogService extends BaseEntityService<DataChangeLog> {
     }
 
     /**
+     * 获取一个业务实体的数据变更历史
+     *
+     * @param entityId 业务实体Id
+     * @return 数据变更历史
+     */
+    public List<DataChangeLog> findLogsByEntityId(String entityId, String tenantCode) {
+        return dao.findByEntityIdAndTenantCodeOrderByOperateTimeDesc(entityId, tenantCode);
+    }
+
+    /**
      * 获取业务实体的清单
      * @return 业务实体的清单
      */

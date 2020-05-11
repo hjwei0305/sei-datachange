@@ -40,4 +40,13 @@ public interface DataChangeLogApi extends BaseEntityApi<DataChangeLogDto> {
     @PostMapping(path = "queryByPage", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "分页查询数据变更历史", notes = "通过关键属性和时间段分页查询数据变更历史")
     ResultData<PageResult<DataChangeLogDto>> queryByPage(@RequestBody @Valid DataChangeLogQuickQueryParam queryParam);
+
+    /**
+     * 获取一个业务实体的数据变更历史
+     * @param entityId 业务实体Id
+     * @return 数据变更历史
+     */
+    @GetMapping(path = "findLogsByEntityId")
+    @ApiOperation(value = "获取一个业务实体的数据变更历史", notes = "通过业务实体Id，获取业务实体的数据变更历史，按操作时间降序排列")
+    ResultData<List<DataChangeLogDto>> findLogsByEntityId(@RequestParam("entityId") String entityId);
 }

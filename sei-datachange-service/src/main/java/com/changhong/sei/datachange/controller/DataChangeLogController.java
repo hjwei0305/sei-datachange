@@ -3,7 +3,6 @@ package com.changhong.sei.datachange.controller;
 import com.changhong.sei.core.context.ContextUtil;
 import com.changhong.sei.core.dto.ResultData;
 import com.changhong.sei.core.dto.serach.PageResult;
-import com.changhong.sei.core.utils.ResultDataUtil;
 import com.changhong.sei.datachange.api.DataChangeLogApi;
 import com.changhong.sei.datachange.dto.DataChangeLogDto;
 import com.changhong.sei.datachange.dto.DataChangeLogQuickQueryParam;
@@ -12,7 +11,6 @@ import com.changhong.sei.datachange.entity.DataChangeLog;
 import com.changhong.sei.datachange.service.DataChangeLogService;
 import com.changhong.sei.core.controller.BaseEntityController;
 import com.changhong.sei.core.service.BaseEntityService;
-import org.springframework.http.ContentDisposition;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +60,17 @@ public class DataChangeLogController extends BaseEntityController<DataChangeLog,
     public ResultData<PageResult<DataChangeLogDto>> queryByPage(@Valid DataChangeLogQuickQueryParam queryParam) {
         String tenantCode = ContextUtil.getTenantCode();
         return convertToDtoPageResult(service.queryByPage(queryParam, tenantCode));
+    }
+
+    /**
+     * 获取一个业务实体的数据变更历史
+     *
+     * @param entityId 业务实体Id
+     * @return 数据变更历史
+     */
+    @Override
+    public ResultData<List<DataChangeLogDto>> findLogsByEntityId(String entityId) {
+        String tenantCode = ContextUtil.getTenantCode();
+        return ResultData.success(convertToDtos(service.findLogsByEntityId(entityId, tenantCode)));
     }
 }
