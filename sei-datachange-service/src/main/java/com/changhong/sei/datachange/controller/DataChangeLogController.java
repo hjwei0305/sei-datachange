@@ -28,7 +28,8 @@ import java.util.List;
 @RestController
 @Api(value = "DataChangeLogApi", tags = "数据变更日志API服务")
 @RequestMapping(path = "dataChangeLog", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class DataChangeLogController extends BaseEntityController<DataChangeLog, DataChangeLogDto> implements DataChangeLogApi {
+public class DataChangeLogController extends BaseEntityController<DataChangeLog, DataChangeLogDto>
+        implements DataChangeLogApi {
     /**
      * 服务对象
      */
