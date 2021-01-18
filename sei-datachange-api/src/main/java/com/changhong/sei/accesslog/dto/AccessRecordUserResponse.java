@@ -1,6 +1,7 @@
 package com.changhong.sei.accesslog.dto;
 
 import com.changhong.sei.core.dto.BaseEntityDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -36,6 +37,7 @@ public class AccessRecordUserResponse extends BaseEntityDto {
     private long countNum;
 
     @ApiModelProperty(value = "最近访问时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime accessTime;
 
     public AccessRecordUserResponse() {
