@@ -22,11 +22,14 @@ import java.time.LocalDateTime;
 @DynamicUpdate
 public class AccessRecord extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -7958165221208610549L;
+
+    public static final String DEFAULT_VALUE = "none";
+    
     /**
      * 租户代码
      */
     @Column(name = "tenant_code", length = 20, nullable = false)
-    private String tenantCode = "none";
+    private String tenantCode = DEFAULT_VALUE;
     /**
      * 操作人
      */
@@ -50,7 +53,7 @@ public class AccessRecord extends BaseEntity implements Serializable {
      * 操作
      */
     @Column(name = "feature")
-    private String feature;
+    private String feature = DEFAULT_VALUE;
     /**
      * 类型
      */
