@@ -45,7 +45,7 @@ public interface AccessRecordApi {
     /**
      * 指定时间段访问top N的功能
      */
-    @GetMapping(path = "getTopFeatures/{tenant}/{period}/{topNum}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getTopFeatures/{tenant}/{period}/{topNum}")
     @ApiOperation(value = "指定时间段访问top N的功能", notes = "指定时间段访问top N的功能")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "tenant", value = "租户代码", required = true, paramType = "path"),
@@ -61,7 +61,7 @@ public interface AccessRecordApi {
     /**
      * 指定时间段访问top N的人
      */
-    @GetMapping(path = "getTopUsers/{tenant}/{period}/{topNum}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getTopUsers/{tenant}/{period}/{topNum}")
     @ApiOperation(value = "指定时间段访问top N的人", notes = "指定时间段访问top N的人")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "tenant", value = "租户代码", required = true, paramType = "path"),
@@ -77,7 +77,7 @@ public interface AccessRecordApi {
     /**
      * 指定时间段某一功能访问的人
      */
-    @GetMapping(path = "getUsersByFeature/{tenant}/{period}/{topNum}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getUsersByFeature/{tenant}/{period}/{topNum}")
     @ApiOperation(value = "指定时间段某一功能访问的人", notes = "指定时间段某一功能访问的人")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "tenant", value = "租户代码", required = true, paramType = "path"),
@@ -93,7 +93,7 @@ public interface AccessRecordApi {
     /**
      * 指定时间段某人访问的功能
      */
-    @GetMapping(path = "getFeaturesByUser/{tenant}/{period}/{topNum}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "getFeaturesByUser/{tenant}/{period}/{topNum}")
     @ApiOperation(value = "指定时间段某人访问的功能", notes = "指定时间段某人访问的功能")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "tenant", value = "租户代码", required = true, paramType = "path"),
