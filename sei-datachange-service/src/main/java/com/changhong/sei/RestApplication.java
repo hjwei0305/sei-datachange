@@ -1,4 +1,4 @@
-package com.changhong.sei.datachange;
+package com.changhong.sei;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @version 1.0.1 2019-12-18 10:41
  */
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.changhong.sei.datachange.service.client"})
+//@EnableFeignClients(basePackages = {"com.changhong.sei.datachange.service.client"})
 public class RestApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestApplication.class, args);
