@@ -14,12 +14,15 @@ import com.changhong.sei.core.util.HttpUtils;
 import com.changhong.sei.util.EnumUtils;
 import eu.bitwalker.useragentutils.UserAgent;
 import io.swagger.annotations.Api;
+import org.codehaus.jackson.node.ValueNode;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,8 +81,17 @@ public class AccessRecordController implements AccessRecordApi {
      * 获取时间段周期
      */
     @Override
-    public ResultData<Map<String, String>> getPeriods() {
-        return ResultData.success(EnumUtils.getEnumMap(TimePeriod.class));
+    public ResultData<List<Map<String, String>>> getPeriods() {
+        Map<String, String> map = EnumUtils.getEnumMap(TimePeriod.class);
+        List<Map<String, String>> data = new ArrayList<>();
+        Map<String, String> mapData;
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            mapData = new HashMap<>();
+            mapData.put("value", entry.getKey());
+            mapData.put("name", entry.getValue());
+            data.add(mapData);
+        }
+        return ResultData.success(data);
     }
 
     /**

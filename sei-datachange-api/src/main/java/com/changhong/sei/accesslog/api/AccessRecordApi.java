@@ -40,7 +40,7 @@ public interface AccessRecordApi {
      */
     @GetMapping(path = "getPeriods")
     @ApiOperation(value = "获取时间段周期", notes = "获取时间段周期")
-    ResultData<Map<String, String>> getPeriods();
+    ResultData<List<Map<String, String>>> getPeriods();
 
     /**
      * 指定时间段访问top N的功能
