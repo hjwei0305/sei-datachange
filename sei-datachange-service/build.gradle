@@ -23,9 +23,6 @@ dependencies {
     // 第三方组件依赖包
     compile("mysql:mysql-connector-java:$mysqlVersion")
 
-    // 获取用户浏览器、操作系统等信息
-    compile 'eu.bitwalker:UserAgentUtils:1.21'
-
     // 测试依赖包
     testCompile("com.changhong.sei:sei-test-starter:$sei_version")
 }

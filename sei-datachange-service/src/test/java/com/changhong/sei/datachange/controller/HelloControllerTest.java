@@ -7,8 +7,6 @@ import com.changhong.sei.datachange.controller.HelloController;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.*;
-
 /**
  * 实现功能: Hello 单元测试
  */
